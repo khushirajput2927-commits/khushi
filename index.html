@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Personal portfolio of an AI Trainer passionate about technology, swimming, hiking, and reading.">
+  <title>My Personal Portfolio</title>
+  <style>
+    :root {
+      --navy: #172b4d;
+      --blue: #315b96;
+      --pale: #edf3fb;
+      --lavender: #f3f0fb;
+      --ink: #273449;
+      --muted: #64748b;
+      --white: #ffffff;
+      --shadow: 0 12px 32px rgba(23, 43, 77, .09);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      color: var(--ink);
+      background: #fbfcff;
+      line-height: 1.7;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(1100px, 90%); margin: 0 auto; }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(255,255,255,.94);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 2px 14px rgba(23,43,77,.06);
+    }
+    nav {
+      min-height: 72px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+    }
+    .logo { color: var(--navy); font-size: 1.25rem; font-weight: 800; letter-spacing: .3px; }
+    .nav-links { display: flex; gap: 26px; list-style: none; flex-wrap: wrap; }
+    .nav-links a { color: #475569; font-size: .94rem; font-weight: 600; transition: color .2s; }
+    .nav-links a:hover { color: var(--blue); }
+
+    .hero {
+      padding: 92px 0 86px;
+      background: linear-gradient(125deg, #edf3fb 0%, #f7f5ff 58%, #fff 100%);
+    }
+    .hero-content {
+      display: grid;
+      grid-template-columns: 1.35fr .85fr;
+      align-items: center;
+      gap: 55px;
+    }
+    .eyebrow {
+      display: inline-block;
+      color: var(--blue);
+      background: #dfeafa;
+      border-radius: 30px;
+      padding: 7px 14px;
+      font-size: .82rem;
+      font-weight: 700;
+      letter-spacing: .5px;
+      margin-bottom: 18px;
+    }
+    h1 {
+      color: var(--navy);
+      font-size: clamp(2.5rem, 5vw, 4.2rem);
+      line-height: 1.12;
+      letter-spacing: -1.8px;
+      margin-bottom: 22px;
+    }
+    h1 span { color: var(--blue); }
+    .hero p { max-width: 650px; color: #526176; font-size: 1.08rem; }
+    .hero-actions { display: flex; gap: 14px; margin-top: 30px; flex-wrap: wrap; }
+    .button {
+      display: inline-block;
+      padding: 12px 22px;
+      border-radius: 9px;
+      font-weight: 700;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .button:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+    .button-primary { background: var(--navy); color: white; }
+    .button-secondary { border: 1px solid #c7d3e4; color: var(--navy); background: white; }
+
+    .profile-card {
+      background: white;
+      padding: 30px;
+      border-radius: 24px;
+      text-align: center;
+      box-shadow: var(--shadow);
+      max-width: 340px;
+      justify-self: center;
+      width: 100%;
+    }
+    .profile-placeholder {
+      width: 170px;
+      height: 170px;
+      margin: 0 auto 18px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      color: var(--blue);
+      font-size: 3.5rem;
+      background: linear-gradient(135deg, #dce9fa, #eee8fb);
+      border: 7px solid #f7f9fd;
+    }
+    .profile-card h2 { color: var(--navy); font-size: 1.25rem; }
+    .profile-card p { color: var(--muted); font-size: .92rem; margin-top: 5px; }
+
+    section { padding: 82px 0; scroll-margin-top: 72px; }
+    .section-heading { text-align: center; margin-bottom: 42px; }
+    .section-heading .eyebrow { margin-bottom: 10px; }
+    .section-heading h2 { color: var(--navy); font-size: clamp(2rem, 4vw, 2.7rem); line-height: 1.2; }
+    .section-heading p { color: var(--muted); max-width: 620px; margin: 12px auto 0; }
+
+    .intro-panel {
+      max-width: 850px;
+      margin: 0 auto;
+      padding: 34px 38px;
+      background: white;
+      border: 1px solid #e8edf5;
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+    }
+    .intro-panel p + p { margin-top: 14px; }
+
+    .soft-section { background: #f5f8fd; }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+    }
+    .card {
+      background: white;
+      border: 1px solid #e8edf5;
+      border-radius: 18px;
+      padding: 30px;
+      box-shadow: 0 8px 24px rgba(23,43,77,.05);
+      transition: transform .25s, box-shadow .25s;
+    }
+    .card:hover { transform: translateY(-6px); box-shadow: var(--shadow); }
+    .card-icon {
+      width: 58px;
+      height: 58px;
+      display: grid;
+      place-items: center;
+      border-radius: 15px;
+      background: var(--pale);
+      font-size: 1.8rem;
+      margin-bottom: 18px;
+    }
+    .card h3 { color: var(--navy); font-size: 1.3rem; margin-bottom: 9px; }
+    .card p { color: var(--muted); }
+
+    .contact-wrap {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 34px;
+      align-items: start;
+    }
+    .contact-info {
+      padding: 30px;
+      background: var(--navy);
+      color: white;
+      border-radius: 18px;
+    }
+    .contact-info h3 { font-size: 1.5rem; margin-bottom: 12px; }
+    .contact-info p { color: #d8e2f1; margin-bottom: 18px; }
+    .contact-info .detail { margin-top: 14px; color: #fff; }
+    form {
+      padding: 30px;
+      background: white;
+      border: 1px solid #e8edf5;
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    label { display: block; color: var(--navy); font-weight: 650; font-size: .92rem; margin-bottom: 6px; }
+    input, textarea {
+      width: 100%;
+      padding: 12px 13px;
+      border: 1px solid #d7e0ec;
+      border-radius: 8px;
+      background: #fcfdff;
+      color: var(--ink);
+      font: inherit;
+      margin-bottom: 17px;
+      outline: none;
+    }
+    input:focus, textarea:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(49,91,150,.12); }
+    textarea { min-height: 135px; resize: vertical; }
+    button {
+      border: 0;
+      cursor: pointer;
+      font: inherit;
+    }
+    .form-note { color: var(--muted); font-size: .82rem; margin-top: 12px; }
+
+    footer { background: #111f38; color: #d6deea; text-align: center; padding: 23px 0; font-size: .9rem; }
+
+    @media (max-width: 760px) {
+      nav { padding: 16px 0; align-items: flex-start; flex-direction: column; gap: 10px; }
+      .nav-links { gap: 12px 18px; }
+      .hero { padding: 65px 0; }
+      .hero-content, .contact-wrap { grid-template-columns: 1fr; }
+      .profile-card { margin-top: 12px; }
+      .cards { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 480px) {
+      .form-row { grid-template-columns: 1fr; gap: 0; }
+      .intro-panel, form, .contact-info, .card { padding: 23px; }
+      section { padding: 64px 0; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="container" aria-label="Main navigation">
+      <a class="logo" href="#home">My Portfolio</a>
+      <ul class="nav-links">
+        <li><a href="#intro">Introduction</a></li>
+        <li><a href="#hobbies">Hobbies</a></li>
+        <li><a href="#interests">Interests</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-content">
+        <div>
+          <span class="eyebrow">WELCOME TO MY PORTFOLIO</span>
+          <h1>Hello, I'm an <span>AI Trainer</span></h1>
+          <p>I enjoy helping people discover how technology can turn ideas into practical solutions. Explore my professional journey, hobbies, and interests below.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#intro">Know More</a>
+            <a class="button button-secondary" href="#contact">Get in Touch</a>
+          </div>
+        </div>
+        <div class="profile-card">
+          <div class="profile-placeholder" aria-label="Profile image placeholder">✦</div>
+          <h2>AI Trainer</h2>
+          <p>Learning, creating, and sharing knowledge</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="intro">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">A LITTLE ABOUT ME</span>
+          <h2>Introduction</h2>
+          <p>A quick overview of what I do and what motivates me.</p>
+        </div>
+        <div class="intro-panel">
+          <p>I am currently working as an <strong>AI Trainer, teaching low-code and no-code tools to college graduates.</strong> My role focuses on making technology approachable and helping learners understand how they can use modern tools to bring their ideas to life.</p>
+          <p>I enjoy guiding students as they explore AI-powered platforms, learn application-building concepts, and develop practical digital skills. I believe that creativity and curiosity are important parts of learning, and that technology can empower people to solve problems even without extensive programming experience.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="soft-section" id="hobbies">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">WHAT I LOVE DOING</span>
+          <h2>My Hobbies</h2>
+          <p>Activities that keep me curious, active, and creative.</p>
+        </div>
+        <div class="cards">
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">🏊</div>
+            <h3>Swimming</h3>
+            <p>Swimming is a refreshing way for me to stay active and take a break from a busy routine. It encourages discipline, builds focus, and gives me an opportunity to enjoy the water while maintaining a balanced lifestyle.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">💻</div>
+            <h3>Application Development</h3>
+            <p>I enjoy exploring application development and turning creative ideas into useful digital experiences. Learning about new tools, experimenting with features, and finding practical ways to solve everyday problems make this hobby exciting for me.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="interests">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">BEYOND THE EVERYDAY</span>
+          <h2>My Interests</h2>
+          <p>Things that inspire me to explore, reflect, and keep learning.</p>
+        </div>
+        <div class="cards">
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">🥾</div>
+            <h3>Hiking</h3>
+            <p>Hiking interests me because it offers a chance to explore nature, discover new places, and enjoy the outdoors. I appreciate the peaceful surroundings, beautiful views, and sense of adventure that come with exploring a trail.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">📚</div>
+            <h3>Book Reading</h3>
+            <p>Reading gives me an opportunity to learn, imagine, and look at the world from different perspectives. I enjoy discovering new ideas through books, expanding my knowledge, and making continuous learning a part of my life.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="soft-section" id="contact">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">LET'S CONNECT</span>
+          <h2>Visitor Contact</h2>
+          <p>Have a question or want to connect? Send me a message.</p>
+        </div>
+        <div class="contact-wrap">
+          <aside class="contact-info">
+            <h3>Get in touch</h3>
+            <p>I'd be happy to hear from visitors, learners, and people who share an interest in technology and creativity.</p>
+            <div class="detail">✉️ &nbsp; your.email@example.com</div>
+            <div class="detail">🌐 &nbsp; Personal Portfolio</div>
+            <p class="form-note" style="color:#cbd7e8">Replace the sample email with your preferred contact details.</p>
+          </aside>
+
+          <form id="contactForm">
+            <div class="form-row">
+              <div>
+                <label for="name">Your Name</label>
+                <input id="name" name="name" type="text" placeholder="Enter your name" required>
+              </div>
+              <div>
+                <label for="email">Email Address</label>
+                <input id="email" name="email" type="email" placeholder="Enter your email" required>
+              </div>
+            </div>
+            <label for="subject">Subject</label>
+            <input id="subject" name="subject" type="text" placeholder="What is your message about?" required>
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Write your message here..." required></textarea>
+            <button class="button button-primary" type="submit">Send Message</button>
+            <p class="form-note">Demo form: it checks that all fields are completed, but does not send or store messages.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">© <span id="year"></span> My Personal Portfolio. All rights reserved.</div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    document.getElementById("contactForm").addEventListener("submit", function (event) {
+      event.preventDefault();
+      if (!this.checkValidity()) {
+        this.reportValidity();
+        return;
+      }
+      alert("Thank you for your message! This demo form is not connected to an email service.");
+      this.reset();
+    });
+  </script>
+</body>
+</html>
